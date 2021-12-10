@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{@language}}" data-color-scheme="light">
+  <head>
+    {{#if (env_var "GTM_ID") }}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer', '{{env_var "GTM_ID"}}');</script>
+    <!-- End Google Tag Manager -->
+    {{/if}}
+    {{#if (env_var "GA_MEASUREMENT_ID") }}
+    <!-- Global site tag (gtag.js) - Google Ads: 625303779 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{env_var "GA_MEASUREMENT_ID"}}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{env_var "GA_MEASUREMENT_ID"}}');
+    </script>
+    {{/if}}
+
+
+    {{!-- Document Settings --}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {{!-- Page Meta --}}
+    <title>{{meta_title}}</title>
+
+    {{!-- Mobile Meta --}}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{!-- Preloading --}}
+    <link rel="preload" href="{{asset 'dist/app.min.js'}}" as="script">
+    <link rel="preload" href="{{asset 'dist/app.min.css'}}" as="style">
+
+    {{!-- PWA --}}
+    <link rel="manifest" href="{{asset 'manifest.webmanifest'}}">
+    <meta name="theme-color" content="#ffe01d">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{asset 'mstile-150x150.png'}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset 'apple-touch-icon.png'}}">
+    <link rel="icon" sizes="192x192" href="{{asset 'android-chrome-192x192.png'}}">
+    <link rel="icon" sizes="384x384" href="{{asset 'android-chrome-384x384.png'}}">
+    <link rel="icon" sizes="16x16" href="{{asset 'favicon-16x16.png'}}">
+    <link rel="icon" sizes="32x32" href="{{asset 'favicon-32x32.png'}}">
+    <link rel="shortcut icon" sizes="48x48" href="{{asset 'icon.ico'}}">
+
+    {{!-- Theme Configuration --}}
+    {{> theme-config}}
+
+    {{!-- Main theme scripts --}}
+    <script async src="{{asset 'dist/app.min.js'}}"></script>
+
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset 'dist/app.min.css'}}" />
+    <!--cssential--><style></style><!--/cssential-->
+
+    {{!-- Ghost outputs important style and meta data with this tag --}}
+    {{ghost_head}}
+  </head>
+  <body class="{{body_class}}">
+    {{> browser-not-support-modal}}
+    {{#if (env_var "GTM_ID") }}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{env_var "GTM_ID"}}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{/if}}
+
+    {{!-- Include Search View --}}
+    {{> search}}
+
+    {{!-- Include Menu --}}
+    {{> menu}}
+
+    {{!-- The blog navigation links --}}
+    {{^is_page_slugs "subscribe"}}
+      {{> header}}
+    {{/is_page_slugs}}
+
+    <main class="main">
+      {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+      {{{body}}}
+    </main>
+
+    {{!-- The footer at the very bottom --}}
+    {{^is_page_slugs "subscribe"}}
+      {{> footer}}
+      <div class="scroll-to-top">{{> icon name="arrow-up"}}</div>
+    {{/is_page_slugs}}
+
+    {{> gradient}}
+
+    {{!-- Service Worker for PWA --}}
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+
+    {{!-- Ghost outputs important scripts and data with this tag --}}
+    {{ghost_foot}}
+  </body>
+</html>

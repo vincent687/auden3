@@ -1,0 +1,47 @@
+{
+  "name":"Auden Ghost Theme",
+  "short_name":"Auden",
+  "description":"Auden - a Magazine & Membership Ghost Theme",
+  "lang":"en",
+  "start_url":"/",
+  "background_color":"#ffffff",
+  "display":"standalone",
+  "theme_color":"#e50b4f",
+  "icons":[
+     {
+        "src":"/assets/favicon.ico",
+        "sizes":"48x48",
+        "type":"image/ico"
+     },
+     {
+      "src": "/assets/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "/assets/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+     "src": "/assets/apple-touch-icon.png",
+     "type": "image/png",
+     "sizes": "180x180"
+   },
+   {
+    "src": "/assets/mstile-150x150.png",
+    "type": "image/png",
+    "sizes": "150x150"
+  },
+   {
+     "src": "/assets/android-chrome-192x192.png",
+     "type": "image/png",
+     "sizes": "192x192"
+   },
+   {
+     "src": "/assets/android-chrome-384x384.png",
+     "type": "image/png",
+     "sizes": "384x384"
+   }
+  ]
+}

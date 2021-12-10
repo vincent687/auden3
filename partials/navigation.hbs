@@ -1,0 +1,26 @@
+<div class="my-fancy-nav-wrapper">
+    <ul class="nav">
+    {{#if area}}
+        {{#if_equals area "header"}}
+            {{#foreach navigation}}
+                {{#navigation_label this "header"}}
+                    <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}"><a href="{{url absolute="true"}}">{{displayName}}</a></li>
+                {{/navigation_label}}
+            {{/foreach}}
+        {{/if_equals}}
+        {{#if_equals area "footer"}}
+            {{#foreach navigation}}
+                {{#navigation_label this "footer"}}
+                    <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}"><a href="{{url absolute="true"}}">{{displayName}}</a></li>
+                {{/navigation_label}}
+            {{/foreach}}
+        {{/if_equals}}
+    {{else}}
+        {{#foreach navigation}}
+            {{#navigation_label this "header"}}
+                <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}"><a href="{{url absolute="true"}}">{{displayName}}</a></li>
+            {{/navigation_label}}
+        {{/foreach}}
+    {{/if}}
+    </ul>
+</div>

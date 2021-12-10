@@ -1,0 +1,30 @@
+<div id="sub-tag-navigator" class="sub-tag-navigation">
+    {{#if id}}
+    <ul data-sub-tag-container>
+        <li class="space"></li>
+        {{#get "tags" limit="1" filter="id:{{id}}" include="children"}}
+            {{#foreach tags}}
+                <li class="nav-children nav-{{slug}}{{#is_current_tag this}} nav-current{{/is_current_tag}}">
+                    <a href="{{url}}" title="{{name}}" aria-label="{{name}}" class="tag-{{slug}}">
+                        {{t "All"}}
+                    </a>
+                </li>
+                {{#if children}}
+                    {{#each children as |child|}}
+                        {{#tag_decorate_url child}}
+                            <li class="nav-children nav-{{tag.slug}}{{#is_current_tag tag}} nav-current{{/is_current_tag}}">
+                                <a href="{{tag.url}}" title="{{tag.name}}" aria-label="{{tag.name}}" class="tag-{{tag.slug}}">
+                                    {{#locale_string tag.name}}{{display}}{{/locale_string}}
+                                </a>
+                            </li>
+                        {{/tag_decorate_url}}
+                    {{/each}}
+                {{/if}}
+            {{/foreach}}
+        {{/get}}
+        <li class="space"></li>
+    </ul>
+    {{/if}}
+    <div data-left-overlay class="left-overlay"></div>
+    <div data-right-overlay class="right-overlay"></div>
+</div>

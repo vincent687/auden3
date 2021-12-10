@@ -1,0 +1,10 @@
+{{!-- Tag cloud --}}
+<div class="tag-cloud">
+  {{#get "tags" limit="20" as |tags|}}
+    {{#foreach tags as |tag|}}
+      {{#locale_string tag.name}}
+        <a href="{{tag.url}}" title="{{display}}" class="tags tag-{{tag.slug}}">#{{display}}</a>
+      {{/locale_string}}
+    {{/foreach}}
+  {{/get}}
+</div>

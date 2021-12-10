@@ -1,0 +1,39 @@
+{{!< default}}
+
+{{!-- The main content area on the About Us page --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page__header">
+        <h1 class="page__title">{{t "Contact Us"}}</h1>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <article class="{{post_class}}">
+        <div class="post__content">
+          <div class="contact-form">
+            <form data-contact-form id="contact-form" class="contact-form clearfix">
+              <input type="text" data-contact-name name="username" id="username" title="{{t "Full Name"}}" placeholder="{{t "Full Name"}}" required>
+              <input type="email" data-contact-email name="email" id="email" title="{{t "Email"}}" class="email" placeholder="{{t "Email"}}" required>
+              <input type="email" data-contact-confirm-email name="confirm_email" id="confirm_email" title="{{t "Confirm Email"}}" class="email" placeholder="{{t "Confirm Email"}}" required>
+              <input type="text" data-contact-phone name="phone" id="phone" title="{{t "Phone Number (optional)"}}" class="email" placeholder="{{t "Phone Number (optional)"}}">
+              <select data-contact-type id="message_type" name="message_type" placeholder="{{t "Email"}}" required>
+                <option value="">{{t "Select Topic"}}</option>
+                <option value="Inquiries">{{t "Inquiries"}}</option>
+                <option value="Partnerships">{{t "Partnerships"}}</option>
+                <option value="Feedback">{{t "Feedback"}}</option>
+              </select>
+              <textarea data-contact-message rows="5" name="message" id="message" title="{{t "Message"}}" placeholder="{{t "Message"}}" required></textarea>
+              <p class="contact-error" data-contact-error>{{t "Failed to Contact us"}}</p>
+              <p class="contact-error" data-contact-email-no-match>{{t "Please enter a valid email address!"}}</p>
+              <p class="contact-success" data-contact-success>{{t "Thanks for contact us!"}}</p>
+              <button class="btn btn--brand" type="submit" title="{{t "Submit"}}" aria-label="{{t "Submit"}}">{{t "Submit"}}</button>
+            </form>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+{{/post}}

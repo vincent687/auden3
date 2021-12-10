@@ -1,0 +1,16 @@
+{{!-- Related Posts --}}
+{{#get "posts" include="tags,authors" limit="6" filter="id:-{{id}}+tag:{{primary_tag.slug}}+tag:-[hash-rolling-banner,hash-faq]" as |related|}}
+  <section class="related-posts">
+    <div class="container-fluid wrapper">
+      <h5 class="section__title">{{t "You might also like"}}</h5>
+      {{> yellow-bar}}
+      <div class="row related-posts-container">
+        {{#foreach related visibility="all"}}
+          <div class="col-xs-12 col-md-6 col-lg-4 post-wrap">
+            {{> post-card class="col"}}
+          </div>
+        {{/foreach}}
+      </div>
+    </div>
+  </section>
+{{/get}}

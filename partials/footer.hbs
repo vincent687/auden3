@@ -1,0 +1,53 @@
+{{!-- Site footer --}}
+<footer class="footer">
+  <div class="container-fluid wrapper">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="footer__top">
+          <div class="row between-sm">
+            <div class="col-xs-12 col-md-5">
+              <h5 class="m-b-sm">{{t "Created and Funded by"}}</h5>
+              <a href="https://charities.hkjc.com/" target="_blank">
+                <img class="jc"
+                  src="{{asset 'images/jc-2-x@3x.png'}}"
+                  alt="{{@site.title}}"
+                />
+              </a>
+              <h5 class="m-b-sm">{{t "Operated by"}}</h5>
+              <a href="https://socialcareer.org/" target="_blank">
+                <img class="soc-logo"
+                  src="{{asset 'images/soc-logo-web-en.svg'}}"
+                  alt="{{@site.title}}"
+                />
+              </a>
+            </div>
+            <div class="col-xs-12 col-md-2">
+              {{navigation area="footer"}}
+            </div>
+            <div class="col-xs-12 col-md-2">
+              {{navigation type="secondary" area="footer"}}
+            </div>
+            <div class="col-xs-12 col-md-3 footer__subscribe">
+              <h5 class="m-b-sm">{{t "Subscribe to Our Newsletter"}}</h5>
+              <form class="subscribe-form" action="{{env_var "MAILCHIMP_SUBSCRIBE_LINK"}}" method="post" target="_blank" data-members-form="subscribe">
+                <input aria-labelledby="footer-subscribe" data-members-email type="email" placeholder="email@example.com" required/>
+                <button type="submit" title="{{t "Subscribe"}}" aria-label="{{t "Subscribe"}}">
+                  {{>icon name="arrow-right"}}
+                </button>
+                <p data-members-error><!-- error message will appear here --></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        {{!-- Copyright --}}
+        <div class="footer__bottom">
+          <div class="footer__bottom-left">
+            &copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

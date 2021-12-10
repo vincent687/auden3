@@ -1,0 +1,27 @@
+<div class="author-bio-card">
+  {{#foreach authors}}
+    <div class="row">
+      <div class="col-xs-12 col-lg-2 center-xs">
+      {{#if profile_image}}
+        <a href="{{url}}" class="author-bio-card__avatar" aria-label="{{name}}">
+          <img
+            class="lazyload"
+            data-src="{{img_url profile_image}}"
+            alt="{{name}}"
+            src="{{asset 'images/img-placeholder-square.jpg'}}"
+            />
+        </a>
+      {{else}}
+        <a href="{{url}}" class="author-bio-card__author-icon" aria-label="{{name}}">
+          {{>icon name="user" size=""}}
+        </a>
+      {{/if}}
+      </div>
+      <a href="{{url}}" class="col-xs-12 col-lg-10 author-bio-card__info ">
+        <span class="author-bio-card__name">{{#author_name this}}{{name}}{{/author_name}}</span>
+        <span class="author-bio-card__bio">{{#locale_string bio}}{{display}}{{/locale_string}}</span>
+      </a>
+    </div>
+  {{/foreach}}
+
+</div>

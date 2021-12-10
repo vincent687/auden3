@@ -1,0 +1,44 @@
+.cookie-banner {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-light-blue);
+    color: white;
+    z-index: 201;
+    padding: 34px;
+    display: flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-items: center;
+    
+    @media (--viewport-sm) {
+      flex-direction: row;
+    }
+}
+
+.cookie-banner p {
+    text-align: left;
+    color: #2b2d42;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    
+    @media (--viewport-sm) {
+        padding-right: 37px;
+    }
+}
+
+.cookie-banner a {
+    color: var(--color-primary);
+}
+
+.cookie-banner button {
+    align-self: flex-end;
+    margin-top: 14px;
+    
+    @media (--viewport-sm) {
+        align-self: center;
+        margin-top: 0;
+    }
+}

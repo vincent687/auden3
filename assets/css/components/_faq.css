@@ -1,0 +1,33 @@
+.faq-posts {
+    padding: 0 16px 24px;
+
+    @media (--viewport-xl) {
+        padding: 0;
+    }
+}
+
+.faq-post {
+    max-width: 600px;
+    border-radius: 5px;
+    border: solid 1px #eff1f3;
+    background-color: #fafafa;
+    padding: 32px;
+    
+    &__title {
+        font-size: 26px;
+        font-weight: bold;
+        color: #2b2d42;
+        margin-bottom: 23px;
+    }
+    
+    &__content {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.69;
+        color: #3f3f3f;
+        
+        a {
+            color: #054990;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+{{#get "posts" include="tags" filter="tag:[hash-{{image_tag_name}},hash-{{post_tag_name}}]" order="published_at desc" limit="10" as |banner_posts|}}
+  {{#is_array_not_empty banner_posts}}
+    <div class="rolling-banner">
+      <div class="rolling-banner-content-container">
+        <div class="rolling-banner-bg-1 rolling-banner-bg-1-{{../color}}"></div>
+        <div class="rolling-banner-bg-2 rolling-banner-bg-2-{{../color}}"></div>
+        <div class="rolling-banner-content">
+          <div class="rolling-banner-glide">
+            <div class="glide__track" data-glide-el="track">
+              <div class="glide__slides">
+                {{#foreach banner_posts as |banner_post|}}
+                  <div class="rolling-banner-glide-slide glide__slide">
+                    {{#has tag="#{{../image_tag_name}}"}}
+                      {{#get "posts" include="authors,tags,slug" filter="slug:{{excerpt}}" limit="1"}}
+                        {{> rolling-banner-post-item banner_post=banner_post post=posts.[0]}}
+                      {{/get}}
+                    {{else}}
+                      {{> rolling-banner-image-item banner_post=banner_post}}
+                    {{/has}}
+                  </div>
+                {{/foreach}}
+              </div>
+            </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+              <span class="glide__arrow glide__arrow--left" data-glide-dir="<"></span>
+              <span class="glide__arrow glide__arrow--right" data-glide-dir=">"></span>
+            </div>
+
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+              {{#foreach banner_posts}}
+                <span class="glide__bullet" data-glide-dir="={{@index}}"></span>
+              {{/foreach}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{^if ../hide_footer}}
+        <div class="rolling-banner-footer">
+          <div class="rolling-banner-footer-row row">
+            <div class="rolling-banner-footer-item col-xs jc">
+              <div class="rolling-banner-footer-label m-b-sm m-r-md">
+                <span>{{t "Created and Funded by"}}</span>
+              </div>
+              <div class="rolling-banner-footer-image jc">
+                <a href="https://charities.hkjc.com/" target="_blank">
+                  <img class="jc"
+                    src="{{asset 'images/jc-2-x@3x.png'}}"
+                    alt="{{@site.title}}"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="rolling-banner-footer-item col-xs soc">
+              <div class="rolling-banner-footer-label m-b-sm m-r-md">
+                <span>{{t "Operated by"}}</span>
+              </div>
+              <div class="rolling-banner-footer-image soc">
+                <a href="https://socialcareer.org/" target="_blank">
+                  <img class="soc-logo"
+                    src="{{asset 'images/soc-logo-web-en.svg'}}"
+                    alt="{{@site.title}}"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  {{/is_array_not_empty}}
+{{/get}}

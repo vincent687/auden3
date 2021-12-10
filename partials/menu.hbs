@@ -1,0 +1,20 @@
+{{!-- Blog menu --}}
+<div class="menu" id="menu">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6 is-flex start-xs">
+        {{> language-switch}}
+      </div>
+      <div class="col-xs-6 is-flex end-xs">
+        <a tabindex="0" class="menu--close" id="menu-close">
+          {{>icon name="x" size="lg"}}
+        </a>
+      </div>
+      <div class="col-xs-12">
+        <div class="menu__main">
+          {{navigation area="header"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

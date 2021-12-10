@@ -1,0 +1,45 @@
+{{!-- Post/Page share icons --}}
+<div class="social-share">
+  {{!-- facebook --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="facebook" data-title="{{#locale_string title}}{{encode display}}{{/locale_string}}" data-url="{{url absolute='true'}}"
+      title="Share on Facebook" aria-label="{{t "Share on"}} Facebook">
+    {{>icon name="facebook" size="sm"}}
+  </a>
+  {{!-- twitter --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="twitter" data-title="{{#locale_string title}}{{encode display}}{{/locale_string}}" data-url="{{url absolute='true'}}"
+      title="Share on Twitter" aria-label="{{t "Share on"}} Twitter">
+    {{>icon name="twitter" size="sm"}}
+  </a>
+  {{!-- Linkedin --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="linkedin" data-title="{{#locale_string title}}{{encode display}}{{/locale_string}}" data-url="{{url absolute='true'}}"
+      title="Share on Linkedin" aria-label="{{t "Share on"}} Linkedin">
+    {{>icon name="linkedin" size="sm"}}
+  </a>
+  {{!-- WhatsApp --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="whatsapp" data-title="{{#locale_string title}}{{encode display}}{{/locale_string}}" data-url="{{url absolute='true'}}"
+      title="Share on WhatsApp" aria-label="{{t "Share on"}} WhatsApp">
+    {{>icon name="whatsapp" size="sm"}}
+  </a>
+  {{!-- Telegram --}}
+  <a class="social-share__item js-share" tabindex="0"
+      data-type="telegram" data-title="{{#locale_string title}}{{encode display}}{{/locale_string}}" data-url="{{url absolute='true'}}"
+      title="Share on Telegram" aria-label="{{t "Share on"}} Telegram">
+    {{>icon name="telegram" size="sm"}}
+  </a>
+  {{!-- Mail --}}
+  <a href="mailto:?subject={{#locale_string title}}{{encode display}}{{/locale_string}}&body={{url absolute='true'}}"
+      class="social-share__item js-share" tabindex="0"
+      data-type="email" data-title="{{#locale_string title}}{{encode display}}{{/locale_string}}" data-url="{{url absolute='true'}}"
+      title="Share by email" aria-label="{{t "Share by email"}}">
+    {{>icon name="mail" size="sm"}}
+  </a>
+  <a class="copy-link js-share js-copy-link" tabindex="0"
+    data-type="copy" data-title="{{#locale_string title}}{{encode display}}{{/locale_string}}" data-url="{{url absolute='true'}}"
+    title="{{t "Copy to clipboard"}}" data-label="Copied!" aria-label="{{t "Copy to clipboard"}}">
+    {{>icon name="copy" size="sm"}}
+  </a>
+</div>

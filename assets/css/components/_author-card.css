@@ -1,0 +1,120 @@
+.author-cards-row {
+  align-items: stretch;
+}
+
+.author-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: calc(1.25 * var(--gap)) 0;
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--global-radius);
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+
+  @media (--viewport-md) {
+    padding: var(--gap) var(--gap-xl);
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    min-height: 288px;
+    height: 100%;
+  }
+
+  &__image-col {
+    .author-card__counter {
+      display: none;
+
+      @media (--viewport-md) {
+        display: inherit;
+      }
+    }
+  }
+
+  &__content {
+    padding: calc(0.875 * var(--gap)) calc(0.875 * var(--gap)) 0 calc(0.875 * var(--gap));
+    flex: 1;
+
+    @media (--viewport-sm) {
+      max-width: calc(24 * var(--gap));
+    }
+
+    @media (--viewport-md) {
+      padding: var(--gap);
+    }
+
+    .author-card__counter {
+      @media (--viewport-md) {
+        display: none;
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    object-fit: cover;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 var(--gap);
+    border-radius: var(--global-radius-rounded);
+    border: 5px solid var(--color-secondary);
+    overflow: hidden;
+    transition: all var(--animation-duration) var(--animation-name);
+
+    @mixin attention {
+      box-shadow:
+        0 0 0 5px color(var(--color-secondary) blend(var(--color-bg) 50%));
+    }
+
+    @media (--viewport-md) {
+      width: 7.75rem;
+      height: 7.75rem;
+    }
+  }
+
+  &__title {
+    font-size: calc(1.25 * var(--font-size-base));
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    
+    @media (--viewport-md) {
+      font-size: calc(1.5 * var(--font-size-base));
+      text-align: left;
+    }
+
+    a {
+      @mixin attention {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__counter {
+    margin-top: var(--gap-sm);
+    /* margin-bottom: var(--gap); */
+    font-size: calc(0.875 * var(--font-size-base));
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-primary);
+    text-align: center;
+
+    @media (--viewport-md) {
+      font-size: var(--font-size-base);
+    }
+  }
+
+  &__social {
+    display: flex;
+
+    a {
+      margin: var(--gap-xs);
+      color: var(--color-text-accent-2);
+
+      &:first-of-type { margin-left: 0; }
+
+      @mixin attention {
+        color: var(--color-primary);
+      }
+    }
+  }
+}

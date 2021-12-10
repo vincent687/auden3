@@ -1,0 +1,44 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper page-tags">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page__header">
+        <span class="page-tag-title">{{t "All Topics"}}</span>
+      </div>
+    </div>
+  </div>
+  {{#get "tags" limit="all" include="children" order="name asc"}}
+    {{#foreach tags}}
+      {{^if parent_id}}
+        <div class="page-tags__main-tag">
+          <div data-page-tags__main-tag-header class="is-flex middle-xs main-tag-header between-sm start-xs">
+              <div class="col-xs-12 col-sm-6 col-lg-3 row middle-xs">
+                <img data-collapsed-icon class="header-icon collapsed-icon"
+                  src="{{asset 'images/collapsed.svg'}}"
+                  alt="collapsed"
+                />
+                <img data-expanded-icon class="header-icon expanded-icon is-hidden"
+                  src="{{asset 'images/expanded.svg'}}"
+                  alt="expanded"
+                />
+                <span class="main-tag-name tag-{{slug}}">{{#locale_string name}}{{display}}{{/locale_string}}</span>
+              </div>
+              {{> all-resources url=url name=name class="hidden-in-mobile"}}
+          </div>
+          <div data-page-tags__main-tag-content class="row main-tag-content">
+          {{> all-resources url=url name=name class="display-in-mobile"}}
+          {{#each children as |child|}}
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+              {{> tag-card}}
+            </div>
+          {{/each}}
+          </div>
+        </div>
+      {{/if}}
+    {{/foreach}}
+  {{/get}}
+</div>
+{{/post}}

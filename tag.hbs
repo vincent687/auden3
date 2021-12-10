@@ -1,0 +1,63 @@
+{{!< default}}
+
+<div class="container-fluid wrapper">
+  {{!-- Everything inside the #tag pulls data from the tag --}}
+  {{!-- Tag header --}}
+  {{#tag}}
+    <div class="tag-page-header">
+      {{#if parent_id}}
+        {{#locale_string parent.name}}<h1 class="tag-title">{{display}}</h1>{{/locale_string}}
+        {{> sub-tag-navigation id=parent_id}}
+      {{else}}
+        {{#locale_string name}}<h1 class="tag-title">{{display}}</h1>{{/locale_string}}
+        {{> sub-tag-navigation id=id}}
+      {{/if}}   
+    </div>
+
+    <section class="section">
+      <div class="row">
+        <div class="col-xs">
+          {{> rolling-banner
+            image_tag_name=(concat "rolling-banner-image-" slug)
+            post_tag_name=(concat "rolling-banner-post-" slug)
+            tag_name_postfix=slug
+            color="secondary"
+            hide_footer="true"
+          }}
+        </div>
+      </div>
+    </section>
+
+      <div id="tag-page-posts" class="tag-page-section">
+          {{#tags_slug_filter_string this}}<div data-tags-slug-filter-string style="display: none">{{slugs}}</div>{{/tags_slug_filter_string}}
+          <div class="row between-xs tag-page-section-header">
+            <div>
+              <div data-posts-counter class="tag-post-counter"></div>
+              {{> yellow-bar class="align-left"}}
+            </div>
+            <div class="row between-sm tag-dropdown-container">
+              <select class="tag-dropdown" data-tag-author-select id="tag_author" name="tag_author">
+                <option value="">{{t 'All Authors'}}</option>
+              </select>
+              <select class="tag-dropdown" data-tag-format-select id="tag_format" name="tag_format">
+                <option value="">{{t 'All Formats'}}</option>
+              </select>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="section all-posts">
+              <div data-tag-posts  class="row posts"></div>
+              <div class="row">
+                <div class="col-xs-12 center-xs">
+                  <button id="tag-load-more-posts" class="btn btn--wide btn--brand btn--bordered">
+                    {{t "Load more posts"}}
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+  {{/tag}}
+</div>

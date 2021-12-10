@@ -1,0 +1,83 @@
+{{!< default}}
+<div class="container-fluid wrapper">
+  {{#author}}
+  {{!-- Everything inside the #author tags pulls data from the author --}}
+  {{#get "authors" filter="id:{{id}}" include="count.posts,roles"}}
+    {{#foreach authors as |author|}}
+      {{!-- Exclude owner and admin --}}
+      {{#if_equals roles.[0].name "Owner"}}
+        <script>
+          window.location.href = "/";
+        </script>
+      {{else}}
+      {{#if_equals roles.[0].name "Administrator"}}
+        <script>
+          window.location.href = "/";
+        </script>
+      {{else}}
+  <section class="author-header">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="author-detail-card {{^if profile_image}} no-img{{/if}}">
+          {{!-- Author profile image --}}
+          {{#if profile_image}}
+            <img class="lazyload author-detail-card__image"
+              data-srcset="{{img_url profile_image size="xs"}} 100w,
+                {{img_url profile_image size="s"}} 300w,
+                {{img_url profile_image size="m"}} 600w"
+              data-sizes="(max-width: 800px) 25vw, 400px"
+              data-src="{{img_url profile_image size="s"}}" alt="{{name}}"
+              src="{{asset 'images/img-placeholder-square.jpg'}}" />
+          {{/if}}
+
+          <div class="author-detail-card__content">
+            {{!-- Author Name --}}
+            <h1 class="author-detail-card__title">
+              {{#author_name this}}
+                {{name}}
+              {{/author_name}}
+            </h1>
+
+            <div class="author-detail-card__bio">
+              {{#locale_string bio}}{{display}}{{/locale_string}}
+              {{#if website}}
+                <a class="author-detail-card__website" href="{{website}}" target="_blank">{{url_display website}}</a>
+              {{/if}}
+            </div>
+
+
+            <div class="author-detail-card__counter">
+              {{plural count.posts empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      {{/if_equals}}
+      {{/if_equals}}
+    {{/foreach}}
+  {{/get}}
+  {{/author}}
+  {{!-- The main content/post by the author --}}
+  {{#if posts}}
+    <div class="row">
+      <div class="col-xs-12">
+        <section class="section all-posts">
+          <div class="row posts">
+            {{#foreach posts  visibility="all"}}
+              <div class="col-xs-12 col-md-6 col-lg-4 post-wrap">
+                {{> post-card class="col author"}}
+              </div>
+            {{/foreach}}
+          </div>
+          <div class="row">
+            <div class="col-xs-12 center-xs">
+              <button id="load-more-posts" class="btn btn--wide btn--brand btn--bordered">{{t "Load more posts"}}</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  {{/if}}
+</div>

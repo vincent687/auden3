@@ -1,0 +1,38 @@
+{{!< default}}
+<div class="page-subscribe">
+  <div class="cover">
+    <img class="lazyload site-cover"
+      src="{{asset 'images/subscribe-cover@3x.png'}}"
+    />
+  </div>
+  <form class="page-subscribe-form" action="{{env_var "MAILCHIMP_SUBSCRIBE_LINK"}}" method="post" target="_blank" data-members-form="subscribe">
+    <div class="page-subscribe-navigation">
+      <a class="link-back js-link-back" href="javascript:history.back()">
+        {{> icon name="arrow-left" }}
+      </a>
+    </div>
+    <h1 class="page-subscribe-title">{{t "Subscribe to Our Newsletter"}}</h1>
+    <div class="page-subscribe-box m-b-lg">
+      <input data-members-email type="email" name="EMAIL" placeholder="{{t "Type your email..."}}" autocomplete="off" required/>
+      <button class="btn btn--brand" type="submit">{{t "Submit"}}</button>
+    </div>
+    <div class="message message-success">
+      <div class="message__header">
+        <div class="message__type">{{t "Success"}}</div>
+        <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+      </div>
+      <div class="message__content">
+        {{t "Great! Check your inbox and click the link to confirm your subscription"}}
+      </div>
+    </div>
+    <div class="message message-error">
+      <div class="message__header">
+        <div class="message__type">{{t "Error"}}</div>
+        <div class="message__close js-msg-close">{{>icon name="x" size="xs"}}</div>
+      </div>
+      <div class="message__content">
+        {{t "Please enter a valid email address!"}}
+      </div>
+    </div>
+  </form>
+</div>

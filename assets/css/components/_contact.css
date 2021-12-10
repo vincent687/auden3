@@ -1,0 +1,31 @@
+.contact-form {
+    margin-bottom: 40px;
+
+    select,
+    textarea,
+    input {
+        background-color: #fff;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .contact-success,
+    .contact-error {
+        display: none;
+    }
+
+    .contact-success {
+        color: var(--color-success)
+    }
+
+    .contact-error {
+        color: var(--color-error)
+    }
+
+    .display {
+        display: block;
+        text-align: center;
+    }
+}

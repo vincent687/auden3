@@ -1,0 +1,68 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container-fluid wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page__header">
+      </div>
+    </div>
+  </div>
+  {{#get "authors" limit="all" include="count.posts,roles"}}
+  <div class="author-cards-row row">
+    {{#foreach (sort_authors authors) as |author|}}
+      {{!-- Exclude owner and admin --}}
+      {{#if_equals roles.[0].name "Owner"}}
+      {{else}}
+      {{#if_equals roles.[0].name "Administrator"}}
+      {{else}}
+
+      <div class="col-xs-12 col-lg-6 m-b-lg">
+        <div class="author-card">
+          {{!-- Author profile image --}}
+          <div class="author-card__image-col">
+            <a href="{{url}}">
+              {{#if profile_image}}
+                <img class="lazyload author-card__image"
+                  data-srcset="{{img_url profile_image size="xs"}} 100w,
+                    {{img_url profile_image size="s"}} 300w"
+                  data-sizes="(max-width: 800px) 25vw, 400px"
+                  data-src="{{img_url profile_image size="s"}}" alt="{{name}}"
+                  src="{{asset 'images/img-placeholder-square.jpg'}}" />
+              {{else}}
+                <img
+                  class="author-card__image"
+                  src="{{asset 'images/cover-placeholder.png'}}"
+                  alt="{{name}}"
+                />
+              {{/if}}
+            </a>
+            <div class="author-card__counter">
+              {{plural count.posts empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}
+            </div>
+          </div>
+
+          <div class="author-card__content">
+            {{!-- Author Name --}}
+            <div class="author-card__title">
+              <a href="{{url}}">
+                {{#author_name this}}
+                  {{name}}
+                {{/author_name}}
+              </a>
+            </div>
+            <div class="author-card__counter">
+              {{plural count.posts empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{/if_equals}}
+      {{/if_equals}}
+    {{/foreach}}
+  </div>
+  {{/get}}
+</div>
+{{/post}}

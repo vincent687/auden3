@@ -1,0 +1,17 @@
+diff --git a/node_modules/gscan/lib/specs/v1.js b/node_modules/gscan/lib/specs/v1.js
+index 0798c01..aee5bc1 100644
+--- a/node_modules/gscan/lib/specs/v1.js
++++ b/node_modules/gscan/lib/specs/v1.js
+@@ -15,9 +15,11 @@ knownHelpers = [
+     // Ghost apps
+     'input_email', 'input_password', 'amp_components', 'amp_content', 'amp_ghost_head', 'subscribe_form',
+     // Handlebars and express handlebars
+-    'log', 'if', 'unless', 'with', 'block', 'contentFor', 'each', 'lookup'
++    'log', 'if', 'unless', 'with', 'block', 'contentFor', 'each', 'lookup',
+     // Registering these will break template compile checks
+     // 'blockHelperMissing', 'helperMissing',
++    // JCCC custom helpers
++    'author_name', 'if_equals', 'navigation_label', 'is_page_slugs', 'env_var', 'locale_string', 'sort_authors', 'is_current_tag', 'tags_slug_filter_string', 'is_array_not_empty', 'tag_decorate_url', 'url_display'
+ ];
+
+ templates = [
